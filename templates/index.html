@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Metadata Extractor</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0pM1vRggfhPbrlBIIJ6OGpJv3iOVPVzv4UPzY3ODjI89h7+H" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .result {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .result h4 {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Image Metadata Extractor</h1>
+        <p class="lead">Upload an image to extract its metadata and hash values</p>
+    </div>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="image">Choose Image:</label>
+            <input type="file" class="form-control" name="image" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Upload</button>
+    </form>
+
+    {% if metadata %}
+        <div class="result">
+            <h4>Metadata:</h4>
+            <pre>{{ metadata }}</pre>
+        </div>
+    {% endif %}
+
+    {% if hashes %}
+        <div class="result">
+            <h4>Hashes:</h4>
+            <pre>{{ hashes }}</pre>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Bootstrap JS, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zybcIY2Q13a7W8bP0WgErhQ9V2yF4m2ECtmG9gf9b" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" integrity="sha384-OGpamoFVy38t7mMFE6dM4Dk0dSsbK6t9Y+5K/8sgSKyo7TV1D3hX9eVfOj0J72U4" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0pM1vRggfhPbrlBIIJ6OGpJv3iOVPVzv4UPzY3ODjI89h7+H" crossorigin="anonymous"></script>
+
+</body>
+</html>
